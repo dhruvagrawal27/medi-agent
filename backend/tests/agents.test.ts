@@ -38,7 +38,7 @@ describe("Agents and orchestration", () => {
     const p = getPatient("P001")!;
     const out = await new PharmacologyAgent().run({ patient: p });
     expect(out.result.drugList.length).toBeGreaterThan(0);
-    expect(out.result.drugList.some((d) => d.name === "metformin")).toBe(true);
+    expect(out.result.drugList.some((d: { name: string }) => d.name === "metformin")).toBe(true);
   });
 
   it("PharmacologyAgent checks penicillin allergy", async () => {
